@@ -6,7 +6,6 @@
 `include "adder.v"
 `include "InstructionMemory.v"
 
-
 module cpu;
 	
 	wire clk;
@@ -16,6 +15,14 @@ module cpu;
   wire [31 : 0] instruction;
 
   wire [63 : 0] output_pc_adder;
+
+initial 
+begin
+  
+  pc_reset=1;
+  
+  #100 pc_reset =0;
+end
 
 	clock clock1(clk);
 	pc pc1(clk,pc_reset,newpc,oldpc);
