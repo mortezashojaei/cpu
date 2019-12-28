@@ -29,4 +29,10 @@ reg [7 : 0] Memory [0 : size-1];
 		Memory[15] = 8'hf8;
 		
   end
+
+  assign Instruction[7 : 0] = Memory[adr + 0]; 
+  assign Instruction[15 : 8] = Memory[adr + 1];
+  assign Instruction[23 : 16] = Memory[adr + 2];
+  assign Instruction[31 : 24] = Memory[adr + 3];
+
 endmodule
