@@ -4,6 +4,7 @@
 `include "clock.v"
 `include "pc.v"
 `include "adder.v"
+`include "InstructionMemory.v"
 
 
 module cpu;
@@ -12,12 +13,14 @@ module cpu;
   reg pc_reset;
   wire [63:0]oldpc;
   wire [63:0]newpc;
+  wire [31 : 0] instruction;
 
   wire [63 : 0] output_pc_adder;
 
 	clock clock1(clk);
 	pc pc1(clk,pc_reset,newpc,oldpc);
   adder adder1(oldpc,64'b100,output_pc_adder);
+  InstructionMemory InstructionMemory1 (oldpc,instruction);
 
 
 	initial 
