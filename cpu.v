@@ -48,7 +48,7 @@ end
 	pc pc1(clk,pc_reset,newpc,oldpc);
   adder adder1(oldpc,64'b100,output_pc_adder);
   InstructionMemory InstructionMemory1 (oldpc,instruction);
-  ControlUnit ControlUnit1 (instruction[31 : 21],reg_to_loc,branch,mem_read,mem_to_reg,Alu_Op,mem_write,alu_src,reg_write);
+  ControlUnit ControlUnit1 (instruction[31 : 21],branch,mem_read,mem_to_reg,Alu_Op,mem_write,alu_src,reg_write);
   multiplexer #(.size(5)) RB_multiplexer(instruction[20 : 16],instruction[4 : 0],reg_to_loc,output_register_bank_multiplexer);
   registerBank register_bank (instruction[9 : 5],output_register_bank_multiplexer,instruction[4 : 0],input_data_register,clk,reg_write,reg_data_1,reg_data_2);
   multiplexer alu_multiplexer(reg_data_2,output_sign_extend,alu_src,output_alu_multiplexer);
