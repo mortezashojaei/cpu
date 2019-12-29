@@ -1,7 +1,6 @@
 module ControlUnit(
 
-  input [10 : 0] OpCode,
-  output Reg2Loc,
+  input [6 : 0] OpCode,
   output Branch,
   output MemRead,
   output MemtoReg,
@@ -11,7 +10,7 @@ module ControlUnit(
   output RegWrite
 );
 reg [8:0] outcome;
-assign  {Reg2Loc ,AluSrc ,MemtoReg ,RegWrite ,MemRead ,MemWrite ,Branch } = outcome[8:2];
+assign  {AluSrc ,MemtoReg ,RegWrite ,MemRead ,MemWrite ,Branch } = outcome[8:2];
 assign Aluop = outcome[1:0];
 always @( OpCode )
 casex(OpCode)
